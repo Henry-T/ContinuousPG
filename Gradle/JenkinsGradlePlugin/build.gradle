@@ -1,0 +1,104 @@
+task helloworld {
+	doLast {
+		println "hello world!"
+	}
+}
+
+task jenkinsPluginProbe() {
+	println "BUILD_NAME: $BUILD_NAME"
+	println "BUILD_ID: $BUILD_ID"
+	println "BUILD_DISPLAY_NAME: $BUILD_DISPLAY_NAME"
+	println "JOB_NAME: $JOB_NAME"
+	println "BUILD_TAG: $BUILD_TAG"
+	println "EXECUTOR_NUMBER: $EXECUTOR_NUMBER"
+	println "NODE_NAME: $NODE_NAME"
+	println "NODE_LABELS: $NODE_LABELS"
+	println "WORKSPACE: $WORKSPACE"
+	println "JENKINS_HOME: $JENKINS_HOME"
+	println "JENKINS_URL: $JENKINS_URL"
+	println "BUILD_URL: $BUILD_URL"
+	println "JOB_URL: $JOB_URL"
+	println "SVN_REVISION: $SVN_REVISION"
+	println "SVN_URL: $SVN_URL"
+}
+
+task cleanSVNDir(type:Exec) {
+	workingDir $dir
+	commandLine 'cmd', '/c', 'cleanSVNDir.bat'
+	standardOutput = new ByteArrayOutputStream()
+	ext.output = {
+		return standardOutput.toString()
+	}
+}
+
+
+task shareParameter() {
+
+}
+
+task pseudoTranslation() {
+	soFile = game.po
+}
+
+task composeConfig(type:Exec) {
+	workingDir %localDir
+	commandLine 'cmd', '/c', 'composeConfig.bat {"config":1}'
+	standardOutput = new ByteArrayOutputStream()
+	ext.output = {
+		return standardOutput.toString()
+	}	
+}
+
+task updateGameEngine() {
+	// update game engine
+}
+
+task quickCompileScripts() {
+}
+
+task quickBuildNative() {
+}
+
+task quickInstallNative() {
+}
+
+task quickInstallJava() {
+}
+
+task quickInstallFramework() {
+
+}
+
+task gradleBuildAndroid() {
+
+}
+
+task gSDKBuild() {
+
+}
+
+task versioning() {
+
+}
+
+task quickBuildProject(dependsOn: 'quickBuildNative' 'quickInstallNative' 'quickInstallJava' 'quickCompileScripts' 'gradleBuildAndroid' 'gSDKBuild') {
+}
+
+task unityExecCommand() {
+
+}
+
+task unityBuildProject(dependsOn: 'unityExecCommand' 'gSDKBuild') {
+}
+
+task signAPK() {
+
+}
+
+task uploadToFTP() {
+
+}
+
+
+
+
