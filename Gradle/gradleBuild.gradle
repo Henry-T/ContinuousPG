@@ -1,0 +1,5 @@
+
+task gradleBuild(type: GradleBuild) {
+	buildFile = "hello.gradle"
+	tasks = ['hello']
+}

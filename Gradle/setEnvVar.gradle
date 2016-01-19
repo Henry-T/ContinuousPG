@@ -1,0 +1,4 @@
+
+task setEnvVar(type:Exec) {
+	commandLine 'cmd', '/c', 'setEnvVar.bat', "TestGradleSetEnv", "value of env var set by gradle"
+}

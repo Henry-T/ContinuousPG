@@ -1,0 +1,9 @@
+
+
+task rename << {
+	file("originName.txt").renameTo("renamedName.txt")
+}
+
+task renameBack << {
+	file("renamedName.txt").renameTo("originName.txt")
+}

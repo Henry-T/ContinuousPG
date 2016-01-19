@@ -1,0 +1,21 @@
+task jenkinsProbe() {
+	println "BUILD_NAME: $BUILD_NAME"
+	println "BUILD_ID: $BUILD_ID"
+	println "BUILD_DISPLAY_NAME: $BUILD_DISPLAY_NAME"
+	println "JOB_NAME: $JOB_NAME"
+	println "BUILD_TAG: $BUILD_TAG"
+	println "EXECUTOR_NUMBER: $EXECUTOR_NUMBER"
+	println "NODE_NAME: $NODE_NAME"
+	println "NODE_LABELS: $NODE_LABELS"
+	println "WORKSPACE: $WORKSPACE"
+	println "JENKINS_HOME: $JENKINS_HOME"
+	println "JENKINS_URL: $JENKINS_URL"
+	println "BUILD_URL: $BUILD_URL"
+	println "JOB_URL: $JOB_URL"
+	println "SVN_REVISION: $SVN_REVISION"
+	println "SVN_URL: $SVN_URL"
+	standardOutput = new ByteArrayOutputStream()
+	ext.output = {
+		return standardOutput.toString()
+	}
+}

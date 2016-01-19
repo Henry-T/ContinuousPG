@@ -1,0 +1,17 @@
+
+
+// http://mrhaki.blogspot.com/2009/08/groovy-goodness-working-with-files.html
+
+
+task readConfig << {
+	project.ext.myConfig = new ConfigSlurper().parse(file("configByHand.groovy").toURL())
+	println project.ext.myConfig
+}
+
+task writeConfig(dependsOn: readConfig)
+writeConfig<<{
+	def configFile = file("configSerialized.groovy")
+	configFile.withWriter() {writer ->
+		project.ext.myConfig.writeTo(writer)
+	}
+}

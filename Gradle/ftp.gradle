@@ -1,0 +1,34 @@
+
+repositories{
+	jcenter()
+}
+
+configurations {
+	ftpAntTask
+}
+
+dependencies {
+	ftpAntTask("org.apache.ant:ant-commons-net:1.8.4") {
+		module("commons-net:commons-net:1.4.1") {
+			dependencies "oro:oro:2.0.8:jar"
+		}
+	}
+}
+
+task upload() {
+	doLast {
+		def ftpRemoteDir = "tempDir"
+		def curPackagePath = "."
+		ant {
+			taskdef(name: 'ftp',
+				classname: 'org.apache.tools.ant.taskdefs.optional.net.FTP',
+				classpath: configurations.ftpAntTask.asPath)
+			ftp(action:"send", server: "127.0.0.1", userid: "admin", password: "123456", remoteDir: ftpRemoteDir) {
+				fileset(dir: curPackagePath) {
+					include(name: "fromFileWriter.txt")
+				}
+			}
+		}
+		println "done"
+	}
+}

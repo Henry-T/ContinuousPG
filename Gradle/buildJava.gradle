@@ -1,0 +1,9 @@
+apply plugin: 'java'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	runtime 'commo ns-codec:commons-codec:1.5'
+}

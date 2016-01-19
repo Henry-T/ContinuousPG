@@ -1,0 +1,6 @@
+task write{
+	def myFile = file("fromFileWriter.txt")
+	myFile.delete()
+	myFile << "hello\r\n"
+	myFile << "how do you do"
+}

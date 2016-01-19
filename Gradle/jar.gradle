@@ -1,0 +1,13 @@
+// sample: jar
+
+apply plugin: 'java'
+
+task customJar(type: Jar) {
+	manifest {
+		attributes firstKey: 'firstValue', secondKey: 'secondValue'
+	}
+	archiveName = 'hello.jar'
+	// > Cannot cast object '${buildDir}/jars' with class 'java.lang.String' to class 'java.io.File'
+	destinationDir = file('${buildDir}/jars')
+	from sourceSets.main.output
+}

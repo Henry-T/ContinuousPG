@@ -1,0 +1,9 @@
+// sample: didWork
+
+apply plugin: 'java'
+
+task emailMe(dependsOn: compileJava) << {
+	if(tasks.compileJava.didWork) {
+		println 'SEND EMAIL ANNOUNCING SUCCESS'
+	}
+}

@@ -1,0 +1,6 @@
+// Sample: Task Configuration 2
+task initializeDatabase2
+initializeDatabase2 << { println 'connect to database' }
+initializeDatabase2 << { println 'update database schema' }
+initializeDatabase2 { print 'configuring ' }
+initializeDatabase2 { println 'database connection' }

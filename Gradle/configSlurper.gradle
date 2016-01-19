@@ -1,0 +1,24 @@
+
+task configFromString << {
+	def str = """
+		name = 'Henry.T'
+		male = true
+		contact {
+			QQ = '906311683'
+			mail = 'tang.hy@live.com'
+		}
+	"""
+	def config = new ConfigSlurper().parse(str)
+	println "name: $config.name"
+	println "male: $config.male"
+	println "contact.QQ: $config.contact.QQ"
+	println "contact.mail: $config.contact.mail"
+}
+
+task configFromFile << {
+	def config = new ConfigSlurper().parse(file("configSlurper.groovy").toURL())
+	println "name: $config.name"
+	println "male: $config.male"
+	println "contact.QQ: $config.contact.QQ"
+	println "contact.mail: $config.contact.mail"
+}

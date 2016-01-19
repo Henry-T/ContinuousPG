@@ -1,0 +1,7 @@
+// sample: copy files
+
+task copyFiles(type: Copy) {
+	from 'copySrc'
+	into 'copyTgt'
+	include '**/*.xml', '**/*.txt', '**/*.properties'
+}

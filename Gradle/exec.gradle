@@ -1,0 +1,42 @@
+
+
+task execTree(type:Exec) {
+	commandLine 'cmd', '/c', 'tree'
+	// standardOutput = new ByteArrayOutputStream()
+	// ext.output = {
+	// 	return standardOutput.toString()
+	// }
+}
+
+task execBatch(type:Exec) {
+	commandLine 'cmd', '/c', 'batch.bat'
+	// standardOutput = new ByteArrayOutputStream()
+	// ext.output = {
+	// 	return standardOutput.toString()
+	// }
+}
+
+
+task buildQuickJarLib(type: Exec) {
+	commandLine 'cmd', '/c', "E:/quick/quick3/cocos/platform/android/java/gradlew build"
+	workingDir "E:/quick/quick3/cocos/platform/android/java"
+	standardOutput = new ByteArrayOutputStream()
+	ext.output = {
+		return standardOutput.toString()
+	}
+	doLast {
+		println ext.output
+	}
+}
+
+task test << {
+	exec {
+		// executable = "cmd"
+		// args = ["/c", "D:/Projects/GSDK/1.0r/bin/GSDKTool", "build", "D:/jenkins/workspace/Build_Android/hywx/branches/1.1@HEAD/frameworks/runtime-src/proj.android_no_anysdk/build/outputs/apk/proj.android_no_anysdk-release-unsigned.apk", "D:/jenkins/workspace/Build_Android/hywx/branches/1.1@HEAD/frameworks/runtime-src/proj.android_no_anysdk/channelDef/miTV.cdef", "D:/jenkins/workspace/Build_Android/hywx/branches/1.1@HEAD/proj.android_no_anysdk-release-unsigned+.apk"]
+
+		executable = "D:/Projects/GSDK/1.0r/bin/GSDKTool"
+		args = ["build", "D:/jenkins/workspace/Build_Android/hywx/branches/1.1@HEAD/frameworks/runtime-src/proj.android_no_anysdk/build/outputs/apk/proj.android_no_anysdk-release-unsigned.apk", "D:/jenkins/workspace/Build_Android/hywx/branches/1.1@HEAD/frameworks/runtime-src/proj.android_no_anysdk/channelDef/miTV.cdef", "D:/jenkins/workspace/Build_Android/hywx/branches/1.1@HEAD/proj.android_no_anysdk-release-unsigned+.apk"]
+
+	}
+	println "done"
+}

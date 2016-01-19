@@ -1,0 +1,10 @@
+// sample: dynamic properties
+
+task copyFiles {
+	ext.fileManifest = [ 'data.csv', 'config.json']
+}
+
+task createArtifact(dependsOn: copyFiles) << {
+	println "FILES IN MANIFEST: ${copyFiles.ext.fileManifest}"
+}
+

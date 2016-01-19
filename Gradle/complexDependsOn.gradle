@@ -1,0 +1,65 @@
+
+gradle.taskGraph.beforeTask { Task task ->
+    println "executing $task ..."
+}
+
+gradle.taskGraph.afterTask { Task task, TaskState state ->
+    if (state.failure) {
+        println "FAILED"
+    }
+    else {
+        println "done"
+    }
+}
+
+task preProcessParams
+
+task checkoutQuick
+
+task buildQuickJarLib
+
+task buildQuickNativeLib
+
+task updateQuick (dependsOn: ["checkoutQuick", "buildQuickJarLib", "buildQuickNativeLib"])
+
+task updateDependency(dependsOn: updateQuick)
+
+task checkoutGSDK
+
+task checkoutGame
+
+task getGameRevision
+
+task installQuickJar
+
+task installQuickNative
+
+task installQuick(dependsOn: [installQuickJar, installQuickNative])
+
+task installDependency(dependsOn: installQuick) 
+
+task cleanSVNDir
+
+task pseudoTranslate
+
+task generateConfig
+
+task buildAndroidProject(dependsOn: [installDependency])
+
+task compileRSrc2Jar
+
+task gSDKRepackage
+
+task namePackage
+
+task uploadPackage
+
+task buildGameClient {
+	// dependsOn preProcessParams, updateDependency, checkoutGame, cleanSVNDir, getGameRevision, installDependency
+	// dependsOn buildAndroidProject
+	// dependsOn gSDKRepackage
+	// dependsOn namePackage, uploadPackage
+
+
+	dependsOn preProcessParams, updateDependency, checkoutGame, cleanSVNDir, getGameRevision, installDependency, buildAndroidProject, gSDKRepackage, namePackage, uploadPackage
+}

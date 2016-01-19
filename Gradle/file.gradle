@@ -1,0 +1,15 @@
+task info {
+	def f = file("file.gradle")
+	def fileURL = f.toURL()
+	def filePath = f.path
+	def fileName = f.name
+	def fileNameWithoutExt = fileName.replaceFirst(~/\.[^\.]+$/, '')
+	def parentPath = f.parent
+
+	println "File obj: $f"
+	println "FileURL: $fileURL"
+	println "FilePath: $filePath"
+	println "FileName: $fileName"
+	println "FileNameWithoutExt: $fileNameWithoutExt"
+	println "ParentPath: $parentPath"
+}

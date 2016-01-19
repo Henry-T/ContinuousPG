@@ -1,0 +1,17 @@
+
+
+task helloWorld << {
+	println 'hello, world'
+}
+
+
+task copyFiles {
+	// println 'step 1'
+	// fileManifest = [ 'data.cvs', 'config.json' ] 
+}
+
+task createArtifact(dependsOn: copyFiles) << {
+	println "FILES IN MANIFEST: ${copyFiles.fileManifest}"
+}
+
+

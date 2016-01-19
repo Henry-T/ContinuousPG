@@ -1,0 +1,11 @@
+
+task nullVar {
+	println System.getenv("PATH")
+	println "$System.env.PATH"
+	if (System.env.HOME) {
+		println "defined"
+	}
+	else {
+		println "undefined"
+	}
+}
