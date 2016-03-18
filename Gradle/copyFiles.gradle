@@ -5,3 +5,9 @@ task copyFiles(type: Copy) {
 	into 'copyTgt'
 	include '**/*.xml', '**/*.txt', '**/*.properties'
 }
+
+task copyFileWithJava() {
+	java.nio.file.Path srcPath = java.nio.file.Paths.get('copySrc/a.xml')
+	java.nio.file.Path tgtPath = java.nio.file.Paths.get('copyTgt/a.xml')
+	java.nio.file.Files.copy(srcPath, tgtPath, java.nio.file.StandardCopyOption.REPLACE_EXISTING)
+}
