@@ -1,0 +1,14 @@
+
+task regexMatch {
+	def fStr = file("matchSrc.txt").text
+	println fStr
+
+	// https://regex101.com/r/cN9tY6/1
+	def match = fStr =~ ":(C:[\\W\\w]+?)[\\r\\n]"
+
+	if (!match) {
+		println "no match"
+	} else {
+		println "match group 0:" + match.group(1)
+	}
+}

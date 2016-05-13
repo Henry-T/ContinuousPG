@@ -1,0 +1,12 @@
+
+task genDirToBeDelete << {
+	mkdir("dirToDelete");
+}
+
+task delDir << {
+	delete("dirToDelete");
+
+	// 这样删不掉,但也不会造成build失败
+	// def dir = file("dirToDelete")
+	// dir.delete();
+}

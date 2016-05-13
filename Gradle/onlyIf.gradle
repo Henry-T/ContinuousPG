@@ -11,3 +11,7 @@ task loadTestData(dependsOn: createSchema) << {
 loadTestData.onlyIf {
 	System.properties['load.data'] == 'true'
 }
+
+task loadTestDataNext(dependsOn: loadTestData) {
+	println 'load test data next'
+}

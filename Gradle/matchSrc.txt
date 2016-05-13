@@ -1,0 +1,30 @@
+
+***************************************************
+************** AnySDK Package Report **************
+***************************************************
+Package:1    Success:1    Fail:0
+Success:可可游戏中心(OPPO) 
+Fail:
+Time:2016/04/21 01:45
+result:
+可可游戏中心(OPPO):C:/Users/Henry/Documents/AnySDKFiles/Output/8130/Unknown Version/可可游戏中心(OPPO)/game_Unknown Version.apk
+
+***************************************************
+************** AnySDK Package Report **************
+***************************************************
+Package:1    Success:1    Fail:0
+Success:可可游戏中心(OPPO) 
+Fail:
+Time:2016/04/21 02:39
+result:
+可可游戏中心(OPPO):C:/Users/Henry/Documents/AnySDKFiles/Output/8130/Unknown Version/可可游戏中心(OPPO)/game_Unknown Version.apk
+
+***************************************************
+************** AnySDK Package Report **************
+***************************************************
+Package:1    Success:1    Fail:0
+Success:可可游戏中心(OPPO) 
+Fail:
+Time:2016/04/21 02:49
+result:
+可可游戏中心(OPPO):C:/Users/Henry/Documents/AnySDKFiles/Output/8130/Unknown Version/可可游戏中心(OPPO)/game_Unknown Version.apk
