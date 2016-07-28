@@ -1,0 +1,3 @@
+task failIt << {
+	throw new Exception("fail it anyway!")
+}

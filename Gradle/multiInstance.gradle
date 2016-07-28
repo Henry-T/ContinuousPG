@@ -1,0 +1,5 @@
+task multiInstance << {
+	println "before sleep"
+	sleep(20*1000)
+	println "after sleep"
+}

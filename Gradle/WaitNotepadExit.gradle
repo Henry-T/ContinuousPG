@@ -1,0 +1,11 @@
+// import WaitProcessExit
+
+
+task WaitNotepadExit(type: WaitProcessExit) {
+	image "notepad.exe"
+	timeOut 10
+} 
+
+WaitNotepadExit << {
+	println "notepad.exe exited, continue..."
+}
