@@ -1,0 +1,3 @@
+task build << {
+  println "multiModule innerModule. project.name"+project.name
+}
