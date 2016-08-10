@@ -38,5 +38,15 @@ task test << {
 		args = ["build", "D:/jenkins/workspace/Build_Android/hywx/branches/1.1@HEAD/frameworks/runtime-src/proj.android_no_anysdk/build/outputs/apk/proj.android_no_anysdk-release-unsigned.apk", "D:/jenkins/workspace/Build_Android/hywx/branches/1.1@HEAD/frameworks/runtime-src/proj.android_no_anysdk/channelDef/miTV.cdef", "D:/jenkins/workspace/Build_Android/hywx/branches/1.1@HEAD/proj.android_no_anysdk-release-unsigned+.apk"]
 
 	}
-	println "done"
+	println "done."
+}
+
+
+task test2 << {
+	def result = exec {
+		ignoreExitValue true 
+		executable "cmd"
+		args = ["/c", "exit", "1"]
+	}
+	println "exit value:"+result.getExitValue()
 }
