@@ -108,7 +108,9 @@ page.onPrompt = function() {
 setTimeout(function() {
     console.log("");
     console.log("### STEP 1: Load '" + step1url + "'");
-    page.open(step1url);
+    page.open(step1url, function(){
+        console.log("i can't override you! onLoadFinished ");
+    });
 }, 0);
 
 setTimeout(function() {
