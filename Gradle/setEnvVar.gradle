@@ -2,3 +2,11 @@
 task setEnvVar(type:Exec) {
 	commandLine 'cmd', '/c', 'setEnvVar.bat', "TestGradleSetEnv", "value of env var set by gradle"
 }
+
+// gradle -b setEnvVar.gradle passEnvVar -DTTTTT=ttttt
+task passEnvVar(type:Exec) {
+	// environment "AAAAA", "aaaaa"
+	environment System.getProperties()   // to pass in TTTTT, this is must!
+	// commandLine 'cmd', '/c', 'ruby', 'echoENV.rb'
+	commandLine 'cmd', '/c', 'set'
+}
