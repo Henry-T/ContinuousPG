@@ -10,3 +10,11 @@ task passEnvVar(type:Exec) {
 	// commandLine 'cmd', '/c', 'ruby', 'echoENV.rb'
 	commandLine 'cmd', '/c', 'set'
 }
+
+// try this: gradle -b setEnvVar.gradle -DXXX=YYY
+// will get XXX=YYY in output of child process
+task passEnvVar_Java() {
+	doLast {
+		ProcessPassEnv.startProcessPassEnv()
+	}
+} 

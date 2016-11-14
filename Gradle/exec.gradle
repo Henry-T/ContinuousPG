@@ -1,52 +1,27 @@
 
 
-task execTree(type:Exec) {
-	commandLine 'cmd', '/c', 'tree'
-	// standardOutput = new ByteArrayOutputStream()
-	// ext.output = {
-	// 	return standardOutput.toString()
-	// }
+task execTask(type:Exec) {
+    environment System.getProperties()
+    commandLine 'cmd', '/c', 'tree'
+    workingDir 'build'
 }
 
-task execBatch(type:Exec) {
-	commandLine 'cmd', '/c', 'batch.bat'
-	// standardOutput = new ByteArrayOutputStream()
-	// ext.output = {
-	// 	return standardOutput.toString()
-	// }
+task execDSL {
+  doLast {
+    def result = exec {
+        environment = System.getProperties()
+        executable = 'cmd'
+        args = ['/c', 'tree']
+    }
+    println "exit value: "+result.getExitValue()
+    if (result.getExitValue() == 0) {
+        throw new Exception('I want it to fail!')
+    } else {
+        println 'this will not execute'
+    }    
+  }
 }
 
-
-task buildQuickJarLib(type: Exec) {
-	commandLine 'cmd', '/c', "E:/quick/quick3/cocos/platform/android/java/gradlew build"
-	workingDir "E:/quick/quick3/cocos/platform/android/java"
-	standardOutput = new ByteArrayOutputStream()
-	ext.output = {
-		return standardOutput.toString()
-	}
-	doLast {
-		println ext.output
-	}
-}
-
-task test << {
-	exec {
-		// executable = "cmd"
-		// args = ["/c", "D:/Projects/GSDK/1.0r/bin/GSDKTool", "build", "D:/jenkins/workspace/Build_Android/hywx/branches/1.1@HEAD/frameworks/runtime-src/proj.android_no_anysdk/build/outputs/apk/proj.android_no_anysdk-release-unsigned.apk", "D:/jenkins/workspace/Build_Android/hywx/branches/1.1@HEAD/frameworks/runtime-src/proj.android_no_anysdk/channelDef/miTV.cdef", "D:/jenkins/workspace/Build_Android/hywx/branches/1.1@HEAD/proj.android_no_anysdk-release-unsigned+.apk"]
-
-		executable = "D:/Projects/GSDK/1.0r/bin/GSDKTool"
-		args = ["build", "D:/jenkins/workspace/Build_Android/hywx/branches/1.1@HEAD/frameworks/runtime-src/proj.android_no_anysdk/build/outputs/apk/proj.android_no_anysdk-release-unsigned.apk", "D:/jenkins/workspace/Build_Android/hywx/branches/1.1@HEAD/frameworks/runtime-src/proj.android_no_anysdk/channelDef/miTV.cdef", "D:/jenkins/workspace/Build_Android/hywx/branches/1.1@HEAD/proj.android_no_anysdk-release-unsigned+.apk"]
-
-	}
-	println "done."
-}
-
-
-task test2 << {
-	def result = exec {
-		ignoreExitValue true 
-		executable "cmd"
-		args = ["/c", "exit", "1"]
-	}
-	println "exit value:"+result.getExitValue()
+task execJava {
+    ProcessPassEnv.startProcess('ruby', 'echoENV.rb', '.')
 }
