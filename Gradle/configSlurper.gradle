@@ -1,4 +1,5 @@
 
+// gradlew -b configSlurper.gradle configFromString
 task configFromString << {
 	def str = """
 		name = 'Henry.T'
@@ -13,6 +14,10 @@ task configFromString << {
 	println "male: $config.male"
 	println "contact.QQ: $config.contact.QQ"
 	println "contact.mail: $config.contact.mail"
+	// println "not_exist_prop: $config.not_exist_prop"
+	println "hasProperty('not_exist_prop') " + config.hasProperty('not_exist_prop')
+	println "containsKey('not_exist_prop') " + config.containsKey('not_exist_prop')
+	println config.xxx.getClass()
 }
 
 task configFromFile << {
